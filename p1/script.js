@@ -14,6 +14,40 @@ const validateUser = () => {
   }
 };
 
+const saveUser = () => {
+  let name = document.getElementById("txtName").value;
+  let email = document.getElementById("txtEmail").value;
+  let pass = document.getElementById("txtPass").value;
+
+  if (!name || !email || !pass) {
+    alert("All fields are required!");
+    return;
+  }
+
+  users.push({ name, email, pass });
+  loginForm();
+};
+
+const renderWithSidebar = (content) => {
+  const sidebar = `<div class="sidebar">
+    <h4>Registered Users</h4>
+    <ul>
+      ${
+        users.length > 0
+          ? users.map(u => `<li><b>Email:</b> ${u.email}<br><b>Pass:</b> ${u.pass}</li>`).join('')
+          : '<li>No users yet</li>'
+      }
+    </ul>
+  </div>`;
+
+  root.innerHTML = `
+    <div class="main-wrapper">
+      <div class="form-box">${content}</div>
+      ${sidebar}
+    </div>
+  `;
+};
+
 const loginForm = () => {
   const str = `<div>
     <h3>Login Form</h3>
@@ -29,21 +63,8 @@ const loginForm = () => {
     <p><button onclick='validateUser()'>Submit</button></p>
     <p><button onclick='registerForm()'>Create Account</button></p>
   </div>`;
-  
-  root.innerHTML = str;
-};
 
-
-const saveUser = () => {
-  let name = document.getElementById("txtName").value;
-  let email = document.getElementById("txtEmail").value;
-  let pass = document.getElementById("txtPass").value;
-  users.push({
-    name,
-    email,
-    pass,
-  });
-  loginForm();
+  renderWithSidebar(str);
 };
 
 const registerForm = () => {
@@ -64,15 +85,15 @@ const registerForm = () => {
     <p><button onclick='saveUser()'>Submit</button></p>
     <p><button onclick='loginForm()'>Already a member? Login here...</button></p>
   </div>`;
-  
-  root.innerHTML = str;
-};
 
+  renderWithSidebar(str);
+};
 
 const showHome = () => {
   const str = `<div>
     <h3>Welcome</h3>
     <p><button onclick='loginForm()'>Logout</button></p>
-    `;
-  root.innerHTML = str + "</div>";
+  </div>`;
+
+  renderWithSidebar(str);
 };
