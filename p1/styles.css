@@ -1,16 +1,64 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f0f4f8;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  color: #2c3e50;
+  background-color: #ecf0f1;
+  padding: 20px;
+  margin-bottom: 0;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
 .container {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
 }
 
-.container div {
-    border: 1px solid gray;
-    padding: 10px;
-    margin: 10px;
-    border-radius: 10px;
+.container > div {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 25px;
+  margin: 10px;
+  border-radius: 10px;
+  width: 300px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05);
 }
 
-.container input,button {
-    width: 100%;
-    box-sizing: border-box;
+input, button {
+  width: 100%;
+  padding: 10px;
+  margin: 6px 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+input:focus {
+  border-color: #3498db;
+  outline: none;
+}
+
+button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #2980b9;
+}
+
+#errorTxt {
+  color: red;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
